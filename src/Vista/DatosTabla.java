@@ -50,7 +50,7 @@ public class DatosTabla extends javax.swing.JFrame {
         jTextEstilo = new javax.swing.JTextField();
         jTextTipo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        bVolver = new javax.swing.JButton();
+        bMostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,10 +118,10 @@ public class DatosTabla extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel1.setText("Registrar nuevos productos:");
 
-        bVolver.setText("volver");
-        bVolver.addActionListener(new java.awt.event.ActionListener() {
+        bMostrar.setText("MOSTRAR TODOS LOS PRODUCTOS");
+        bMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bVolverActionPerformed(evt);
+                bMostrarActionPerformed(evt);
             }
         });
 
@@ -131,11 +131,10 @@ public class DatosTabla extends javax.swing.JFrame {
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGap(53, 53, 53)
                                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(etCdVinilo)
@@ -153,12 +152,15 @@ public class DatosTabla extends javax.swing.JFrame {
                                     .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel1))))
+                                .addGap(17, 17, 17)
+                                .addComponent(bRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(bMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +194,7 @@ public class DatosTabla extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(bRegistrar)
                 .addGap(18, 18, 18)
-                .addComponent(bVolver)
+                .addComponent(bMostrar)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -246,15 +248,14 @@ public class DatosTabla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bRegistrarMouseClicked
 
-    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
-        try {
-            OperacionesBDInterfaz obx=new OperacionesBDInterfaz();
-            obx.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(DatosTabla.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_bVolverActionPerformed
+    /*
+        Hace visible la interfaz "Tabla" y cierra la ventana actual.
+    */
+    private void bMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMostrarActionPerformed
+        Tabla obx=new Tabla();
+        obx.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,8 +296,8 @@ public class DatosTabla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bMostrar;
     private javax.swing.JButton bRegistrar;
-    private javax.swing.JButton bVolver;
     private javax.swing.JLabel etArtista;
     private javax.swing.JLabel etCdVinilo;
     private javax.swing.JLabel etEstilo;
