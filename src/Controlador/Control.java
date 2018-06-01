@@ -35,29 +35,16 @@ public class Control {
         
         return musicaAinsertar;
     }
+
+    /*
+        Este método, retorna la llamada al método "mostrarTabla" del la clase ConexionSQL.
+    */
+    public DefaultTableModel mostrarTable(){
+        return con.mostrarTabla();
+    }
     
-//    public void hola(){
-//        try {
-//            Object datos[]=new Object[6];
-//            
-//            while(con.miResultSet.next()){
-//                for(int i=0;i<6;i++){
-//                    datos[i]=con.miResultSet.getObject(i+1);
-//                }
-//                modeloTabla.addRow(datos);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     
-//    DefaultTableModel modeloTabla=new DefaultTableModel(null,getColumnas());
-//    
-//    public String[] getColumnas(){
-//        String columna[]=new String[]{"ID","NOMBRE","ARTISTA","ESTILO","CD/VINILO","PRECIO"};
-//        return columna;
-//    }
-//    
+    
 
     
 }
