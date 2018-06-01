@@ -67,33 +67,41 @@ public class ConexionSQL {
         return musica;   
     }
     
+    /*
+        Creo un modelo de tabla de tipo DefaultTableModel, al que le agrego un null, y el método "getColumnas".
+        Creo la sentencia sql. Hago la conexión con la Base de Datos, ejecuto la sentencia.
+        Dicha sentencia la recorre un Array y añade los datos a las filas del modelo de la tabla.
+    */
+    public DefaultTableModel modeloTabla=new DefaultTableModel(null,getColumnas());
+    public DefaultTableModel mostrarTabla(){
+        try{
+            String sql="select id,nombre,artista,estilo,cdvinilo,precio from TablaMusica";
+            PreparedStatement miStatement=entrar().prepareStatement(sql);
+            ResultSet miResultSet=miStatement.executeQuery();
+            Object datos[]=new Object[6];
+            
+            while(miResultSet.next()){
+                for(int i=0;i<6;i++){
+                    datos[i]=miResultSet.getObject(i+1);
+                }
+                modeloTabla.addRow(datos);
+            }
+            miResultSet.close();
+            
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return modeloTabla;
+    }
     
-//    public ResultSet miResultSet = null;
-//    public ResultSet mostrarTabla(){
-////        borrarTabla(); //Meto el método "borrarTabla" para que se ejecute el método
-//        entrar();
-//        try{
-//            String sql="select id,nombre,artista,estilo,cdvinilo,precio from TablaMusica";
-//            PreparedStatement miStatement=entrar().prepareStatement(sql);
-//            miResultSet=miStatement.executeQuery();
-//            
-////            Object datos[]=new Object[6];
-////            
-////            while(miResultSet.next()){
-////                for(int i=0;i<6;i++){
-////                    datos[i]=miResultSet.getObject(i+1);
-////                }
-////                obxControl.modeloTabla.addRow(datos);
-////            }
-//            miResultSet.close();
-//            
-//        }catch(Exception e){
-//            System.out.println(e);
-//        }
-////        return obxControl.modeloTabla;
-//        return miResultSet;
-//    }
-
+    /*
+        Este método, añade los nombres de las columnas a las filas.
+    */
+    public String[] getColumnas(){
+        String columna[]=new String[]{"ID","NOMBRE","ARTISTA","ESTILO","CD/VINILO","PRECIO"};
+        return columna;
+    }
     
     
 }
